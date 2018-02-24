@@ -1,6 +1,11 @@
 // Karma configuration
-// Generated on Sat Feb 24 2018 14:47:05 GMT+0800 (中国标准时间)
+// Generated on Mon May 09 2016 13:57:37 GMT-0700 (Pacific Daylight Time)
+// const ChromiumRevision = require('puppeteer/package.json').puppeteer.chromium_revision
+// const Downloader = require('puppeteer/utils/ChromiumDownloader')
+// const revisionInfo = Downloader.revisionInfo(Downloader.currentPlatform(), ChromiumRevision)
 
+// process.env.CHROME_BIN = revisionInfo.executablePath;
+// console.log = function() {}
 module.exports = function (config) {
   config.set({
 
@@ -10,18 +15,21 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'requirejs'],
-
+    frameworks: ['jasmine'],
+    // client: {
+    //     captureConsole: false
+    // },
 
     // list of files / patterns to load in the browser
     files: [
-      'test-main.js',
-      { pattern: 'build/three.js', included: true },
-      { pattern: 'test/jasmine/*.js', included: true }
+      'build/three.js',
+      'test/jasmine/*.js'
+      // { pattern: 'src/client/screen.css', included: false }
+      // 't-SNE/*.js'
     ],
 
 
-    // list of files / patterns to exclude
+    // list of files to exclude
     exclude: [
     ],
 
@@ -35,7 +43,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['dots'],
 
 
     // web server port
@@ -48,7 +56,7 @@ module.exports = function (config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -57,9 +65,16 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['ChromeCanary'],
-
-
+    // browsers: ['ChromeHeadless'],
+    // browsers:['Chrome'],
+    browsers: ['ChromeHeadless_without_security'],
+    customLaunchers: {
+      ChromeHeadless_without_security: {
+        base: 'ChromeHeadless',
+        flags: ['--disable-web-security']
+      }
+    },
+    browserNoActivityTimeout: 60000,
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
