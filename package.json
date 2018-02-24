@@ -27,7 +27,13 @@
     "extends": "mdcs"
   },
   "watch": {
-    "test": "test/unit/three.source.unit.js"
+    "test": {
+      "patterns": [
+        "test/unit/src/*.js",
+        "test/three.source.unit.js",
+        "test/custom/*.js"
+      ]
+    }
   },
   "scripts": {
     "build": "rollup -c",
@@ -38,8 +44,8 @@
     "dev-test": "concurrently --names \"ROLLUP,ROLLUPTEST,HTTP\" -c \"bgBlue.bold,bgRed.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"rollup -c test/rollup.unit.config.js -w -m inline\" \"serve --port 8080\"",
     "start": "npm run dev",
     "lint": "eslint src",
-    "test-bac": "npm run build-test && qunit test/unit/three.source.unit.js",
-    "test": "qunit test/unit/three.source.unit.js",
+    "test": "npm run build-test && qunit test/unit/three.source.unit.js",
+    "qunit": "qunit test/unit/three.source.unit.js",
     "watch": "npm-watch",
     "editor": "electron ./editor/main.js"
   },
