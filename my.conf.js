@@ -15,14 +15,16 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-    // client: {
-    //     captureConsole: false
-    // },
+    frameworks: ['jasmine', 'requirejs'],
+    client: {
+      captureConsole: false
+    },
 
     // list of files / patterns to load in the browser
     files: [
-      'build/three.js',
+      'test-main.js',
+      // 'build/three.js',
+      'test/unit/three.source.unit.js',
       'test/jasmine/*.js'
       // { pattern: 'src/client/screen.css', included: false }
       // 't-SNE/*.js'
