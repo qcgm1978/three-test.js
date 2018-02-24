@@ -56,10 +56,18 @@
     "eslint": "^4.1.1",
     "eslint-config-mdcs": "^4.2.2",
     "google-closure-compiler": "20180101.0.0",
+    "jasmine-core": "^2.99.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-requirejs": "^1.1.0",
     "qunit": "^2.4.0",
+    "requirejs": "^2.3.5",
     "rollup": "^0.55.1",
     "rollup-watch": "^4.0.0",
     "serve": "6.4.9",
     "uglify-js": "^3.0.23"
+  },
+  "dependencies": {
+    "karma": "^2.0.0"
   }
 }
